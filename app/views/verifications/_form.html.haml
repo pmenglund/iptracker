@@ -1,0 +1,20 @@
+- form_for @verification do |f|
+  = f.error_messages
+  %p
+    = f.label :ip_address_id
+    %br
+    = f.text_field :ip_address_id
+  %p
+    = f.label :lookup
+    %br
+    = f.text_field :lookup
+  %p
+    = f.label :reverse_lookup
+    %br
+    = f.text_field :reverse_lookup
+  %p
+    = f.label :ping
+    %br
+    = f.check_box :ping
+  %p
+    = f.submit "Submit"

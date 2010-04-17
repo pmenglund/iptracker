@@ -1,0 +1,21 @@
+- title "Verification"
+
+%p
+  %strong Ip Address:
+  =h @verification.ip_address_id
+%p
+  %strong Lookup:
+  =h @verification.lookup
+%p
+  %strong Reverse Lookup:
+  =h @verification.reverse_lookup
+%p
+  %strong Ping:
+  =h @verification.ping
+
+%p
+  = link_to "Edit", edit_verification_path(@verification)
+  |
+  = link_to "Destroy", @verification, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", verifications_path

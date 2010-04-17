@@ -63,7 +63,8 @@ a {
       list-style: disc; }
 
 table {
-  border-collapse: collapse; }
+  border-collapse: collapse;
+  width: 100%; }
 
 th {
   font-size: 120%;

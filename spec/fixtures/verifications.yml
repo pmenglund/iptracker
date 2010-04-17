@@ -1,0 +1,11 @@
+one:
+  ip_address_id: 1
+  lookup: MyString
+  reverse_lookup: MyString
+  ping: false
+
+two:
+  ip_address_id: 1
+  lookup: MyString
+  reverse_lookup: MyString
+  ping: false

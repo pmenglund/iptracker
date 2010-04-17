@@ -7,7 +7,7 @@ class IpAddressesController < ApplicationController
   end
   
   def show
-    @ip_address = IpAddress.find(params[:id])
+    @ip_address = IpAddress.find(params[:id], :include => [:cidr, :verifications])
   end
   
   def new
@@ -37,5 +37,11 @@ class IpAddressesController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
+  def verify
+    @ip_address = IpAddress.find(params[:id])
+    @ip_address.verify
+    flash[:notice] = "Verification in progress..."
+    redirect_to @ip_address
+  end
 end

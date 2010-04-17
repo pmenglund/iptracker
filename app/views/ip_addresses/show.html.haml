@@ -1,24 +1,34 @@
-- title "Ip Address"
+- title "IP Address #{@ip_address.ip_address}"
+
+%id{:style => 'float: right; width: 50%'}
+	= render(:partial => 'verifications/verifications', :object => @ip_address.verifications)
 
 %p
-  %strong Cidr:
-  =link_to h(@ip_address.cidr.name), @ip_address.cidr
+	%strong Cidr:
+	= link_to h(@ip_address.cidr.name), @ip_address.cidr
 %p
-  %strong Ip Address:
-  =h @ip_address.ip_address
+	%strong Ip Address:
+	= h @ip_address.ip_address
+	= "(#{h @ip_address.lookup})"
 %p
-  %strong Name:
-  =h @ip_address.name
+	%strong Name:
+	=h @ip_address.name
+	= "(#{h @ip_address.reverse_lookup})"
 %p
-  %strong Comments:
-  =h @ip_address.comments
+	%strong Comments:
+	=h @ip_address.comments
 %p
-  %strong Free:
-  =h @ip_address.free
+	%strong Ping:
+	=h @ip_address.ping
+%p
+	%strong Free:
+	=h @ip_address.free
 
 %p
-  = link_to "Edit", edit_ip_address_path(@ip_address)
-  |
-  = link_to "Destroy", @ip_address, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", ip_addresses_path
+	= link_to "Edit", edit_ip_address_path(@ip_address)
+	|
+	= link_to "Destroy", @ip_address, :confirm => 'Are you sure?', :method => :delete
+	|
+	= link_to "View All", ip_addresses_path
+	|
+	= link_to "Verify", verify_ip_address_path(@ip_address)

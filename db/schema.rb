@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100416205750) do
+ActiveRecord::Schema.define(:version => 20100417124432) do
 
   create_table "cidrs", :force => true do |t|
     t.string   "cidr",                         :null => false
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(:version => 20100416205750) do
     t.string   "persistence_token"
     t.string   "crypted_password"
     t.string   "password_salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "verifications", :force => true do |t|
+    t.integer  "ip_address_id",  :null => false
+    t.string   "lookup",         :null => false
+    t.string   "reverse_lookup", :null => false
+    t.boolean  "ping",           :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

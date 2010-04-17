@@ -2,9 +2,12 @@
 	%tr
 		%th IP address
 		%th DNS Name
+		%th Lookup
+		%th Reverse lookup
 		%th Cidr
 		%th Comments
 		%th Free
+		%th Ping
 	- for ip_address in ip_addresses
 		= render(ip_address)
 

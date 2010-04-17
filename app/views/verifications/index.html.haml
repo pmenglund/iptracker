@@ -1,0 +1,19 @@
+- title "Verifications"
+
+%table
+  %tr
+    %th Ip address
+    %th Lookup
+    %th Reverse lookup
+    %th Ping
+  - for verification in @verifications
+    %tr
+      %td= h verification.ip_address_id
+      %td= h verification.lookup
+      %td= h verification.reverse_lookup
+      %td= h verification.ping
+      %td= link_to 'Show', verification
+      %td= link_to 'Edit', edit_verification_path(verification)
+      %td= link_to 'Destroy', verification, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Verification", new_verification_path

@@ -7,7 +7,7 @@ class CidrsController < ApplicationController
   end
   
   def show
-    @cidr = Cidr.find(params[:id], :include => 'ip_addresses')
+    @cidr = Cidr.find(params[:id], :include => :ip_addresses)
   end
   
   def new

@@ -14,40 +14,32 @@ describe VerificationsController do
     response.should render_template(:show)
   end
   
-  it "new action should render new template" do
-    get :new
-    response.should render_template(:new)
+  it "new action should not exist" do
+    lambda {
+      get :new
+      }.should raise_error(ActionController::UnknownAction)
   end
   
-  it "create action should render new template when model is invalid" do
-    Verification.any_instance.stubs(:valid?).returns(false)
-    post :create
-    response.should render_template(:new)
+  it "create action should not exist" do
+    lambda {
+      Verification.any_instance.stubs(:valid?).returns(false)
+      post :create
+    }.should raise_error(ActionController::UnknownAction)
+  end
+    
+  it "edit action should not exist" do
+    lambda {
+      get :edit, :id => Verification.first
+    }.should raise_error(ActionController::UnknownAction)
   end
   
-  it "create action should redirect when model is valid" do
-    Verification.any_instance.stubs(:valid?).returns(true)
-    post :create
-    response.should redirect_to(verification_url(assigns[:verification]))
+  it "update action should not exist" do
+    lambda {
+      Verification.any_instance.stubs(:valid?).returns(false)
+      put :update, :id => Verification.first
+    }.should raise_error(ActionController::UnknownAction)
   end
-  
-  it "edit action should render edit template" do
-    get :edit, :id => Verification.first
-    response.should render_template(:edit)
-  end
-  
-  it "update action should render edit template when model is invalid" do
-    Verification.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => Verification.first
-    response.should render_template(:edit)
-  end
-  
-  it "update action should redirect when model is valid" do
-    Verification.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => Verification.first
-    response.should redirect_to(verification_url(assigns[:verification]))
-  end
-  
+    
   it "destroy action should destroy model and redirect to index action" do
     verification = Verification.first
     delete :destroy, :id => verification

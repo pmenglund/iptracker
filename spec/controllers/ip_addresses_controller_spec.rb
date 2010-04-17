@@ -14,23 +14,19 @@ describe IpAddressesController do
     response.should render_template(:show)
   end
   
-  it "new action should render new template" do
-    get :new
-    response.should render_template(:new)
+  it "new action should not exist" do
+    lambda {
+      get :new
+    }.should raise_error(ActionController::UnknownAction)
   end
   
-  it "create action should render new template when model is invalid" do
-    IpAddress.any_instance.stubs(:valid?).returns(false)
-    post :create
-    response.should render_template(:new)
+  it "create action should not_exist" do
+    lambda {
+      IpAddress.any_instance.stubs(:valid?).returns(false)
+      post :create
+    }.should raise_error(ActionController::UnknownAction)
   end
-  
-  it "create action should redirect when model is valid" do
-    IpAddress.any_instance.stubs(:valid?).returns(true)
-    post :create
-    response.should redirect_to(ip_address_url(assigns[:ip_address]))
-  end
-  
+    
   it "edit action should render edit template" do
     get :edit, :id => IpAddress.first
     response.should render_template(:edit)
@@ -48,10 +44,10 @@ describe IpAddressesController do
     response.should redirect_to(ip_address_url(assigns[:ip_address]))
   end
   
-  it "destroy action should destroy model and redirect to index action" do
-    ip_address = IpAddress.first
-    delete :destroy, :id => ip_address
-    response.should redirect_to(ip_addresses_url)
-    IpAddress.exists?(ip_address.id).should be_false
+  it "destroy action should not exist" do
+    lambda {
+      ip_address = IpAddress.first
+      delete :destroy, :id => ip_address
+    }.should raise_error(ActionController::UnknownAction)
   end
 end

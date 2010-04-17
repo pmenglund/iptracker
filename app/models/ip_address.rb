@@ -29,7 +29,7 @@ class IpAddress < ActiveRecord::Base
   end
 
   def verify
-    verifications.create(:lookup => 'test.foo.com', :reverse_lookup => "1.2.3.4", :ping => true)
+    # verifications.create(:lookup => 'test.foo.com', :reverse_lookup => "1.2.3.4", :ping => true)
   end
   
   protected

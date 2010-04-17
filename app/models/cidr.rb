@@ -37,4 +37,9 @@ class Cidr < ActiveRecord::Base
       end
   end
 
+  def verify
+    # nmap -sP -oG /path/to/output cidr
+    # verifications.create(:lookup => 'test.foo.com', :reverse_lookup => "1.2.3.4", :ping => true)
+  end
+
 end

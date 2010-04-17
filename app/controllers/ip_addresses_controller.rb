@@ -3,25 +3,11 @@
 
 class IpAddressesController < ApplicationController
   def index
-    @ip_addresses = IpAddress.paginate :page => params[:page], :order => 'ip_hex', :include => 'cidr'
+    @ip_addresses = IpAddress.paginate :page => params[:page], :order => 'ip_hex', :include => [:cidr, :latest_verification]
   end
   
   def show
     @ip_address = IpAddress.find(params[:id], :include => [:cidr, :verifications])
-  end
-  
-  def new
-    @ip_address = IpAddress.new
-  end
-  
-  def create
-    @ip_address = IpAddress.new(params[:ip_address])
-    if @ip_address.save
-      flash[:notice] = "Successfully created ip address."
-      redirect_to @ip_address
-    else
-      render :action => 'new'
-    end
   end
   
   def edit

@@ -1,4 +1,5 @@
 one:
+  id: 1
   cidr: MyString
   name: MyString
   comments: MyText

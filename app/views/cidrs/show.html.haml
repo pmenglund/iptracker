@@ -16,5 +16,7 @@
 	= link_to "Destroy", @cidr, :confirm => 'Are you sure?', :method => :delete
 	|
 	= link_to "View All", cidrs_path
+	|
+	= link_to "Verify", verify_cidr_path(@cidr)
 
 = render(:partial => "ip_addresses/ip_addresses", :object => @cidr.ip_addresses)

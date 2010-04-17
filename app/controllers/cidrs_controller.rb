@@ -7,7 +7,7 @@ class CidrsController < ApplicationController
   end
   
   def show
-    @cidr = Cidr.find(params[:id])
+    @cidr = Cidr.find(params[:id], :include => 'ip_addresses')
   end
   
   def new
@@ -43,5 +43,11 @@ class CidrsController < ApplicationController
     @cidr.destroy
     flash[:notice] = "Successfully destroyed cidr."
     redirect_to cidrs_url
+  end
+  
+  def verify
+    @cidr = Cidr.find(params[:id])
+    flash[:notice] = "Verification started..."
+    redirect_to @cidr
   end
 end

@@ -3,7 +3,7 @@
 
 class IpAddressesController < ApplicationController
   def index
-    @ip_addresses = IpAddress.paginate :page => params[:page], :order => 'ip_hex'
+    @ip_addresses = IpAddress.paginate :page => params[:page], :order => 'ip_hex', :include => 'cidr'
   end
   
   def show

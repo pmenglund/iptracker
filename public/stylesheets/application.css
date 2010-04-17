@@ -61,3 +61,24 @@ a {
     #errorExplanation ul li {
       font-size: 12px;
       list-style: disc; }
+
+table {
+  border-collapse: collapse; }
+
+th {
+  font-size: 120%;
+  text-align: left; }
+
+tbody tr#odd:hover {
+  background-color: #fff2ca;
+  padding: 3px; }
+
+tbody tr#even:hover {
+  background-color: #fff2ca; }
+
+tr#odd {
+  background-color: #ADB2B5; }
+
+tr#even {
+  background-color: #ECECEC;
+  padding: 3px; }

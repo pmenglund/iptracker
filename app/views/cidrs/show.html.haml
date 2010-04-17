@@ -17,13 +17,4 @@
 	|
 	= link_to "View All", cidrs_path
 
-%table
-	%tr
-		%th IP Address
-		%th Name
-		%th Free
-	- @cidr.ip_addresses.each do |ip|
-		%tr
-			%td= link_to ip.ip_address, ip
-			%td= ip.name
-			%td= ip.free
+= render(:partial => "ip_addresses/ip_addresses", :object => @cidr.ip_addresses)

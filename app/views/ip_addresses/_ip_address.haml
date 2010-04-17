@@ -1,0 +1,8 @@
+%tr
+	%td= link_to h(ip_address.ip_address), ip_address
+	%td= h ip_address.name
+	%td= link_to h(ip_address.cidr.name), ip_address.cidr
+	%td= h ip_address.comments
+	%td= h ip_address.free
+	%td= link_to 'Show', ip_address
+	%td= link_to 'Edit', edit_ip_address_path(ip_address)

@@ -1,6 +1,9 @@
+# Copyright 2010 Code Nursery AB. All rights reserved.
+# Use is subject to license terms.
+
 class Cidr < ActiveRecord::Base
   has_many :ip_addresses, :dependent => :destroy, :order => 'ip_hex'
-  has_many :free_ips, :class_name => "IpAddress", :conditions => {:free => true, :usable => true}
+  has_many :free_ips, :class_name => "IpAddress", :conditions => {:free => true, :usable => true}, :order => 'ip_hex'
 
   attr_accessible :cidr, :name, :comments, :proxy, :position
   

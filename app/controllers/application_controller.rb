@@ -1,3 +1,6 @@
+# Copyright 2010 Code Nursery AB. All rights reserved.
+# Use is subject to license terms.
+
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 

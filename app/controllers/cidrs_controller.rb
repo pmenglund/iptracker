@@ -1,6 +1,9 @@
+# Copyright 2010 Code Nursery AB. All rights reserved.
+# Use is subject to license terms.
+
 class CidrsController < ApplicationController
   def index
-    @cidrs = Cidr.all
+    @cidrs = Cidr.all(:order => 'position')
   end
   
   def show

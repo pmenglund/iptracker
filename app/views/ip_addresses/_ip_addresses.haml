@@ -1,0 +1,10 @@
+%table
+	%tr
+		%th IP address
+		%th DNS Name
+		%th Cidr
+		%th Comments
+		%th Free
+	- for ip_address in ip_addresses
+		= render(ip_address)
+

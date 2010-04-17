@@ -55,4 +55,10 @@ describe CidrsController do
     response.should redirect_to(cidrs_url)
     Cidr.exists?(cidr.id).should be_false
   end
+  
+  it "verify action should redirect to show" do
+    cidr = Cidr.first
+    get :verify, :id => cidr
+    response.should redirect_to(cidr_url(cidr))
+  end
 end

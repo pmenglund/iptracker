@@ -50,4 +50,10 @@ describe IpAddressesController do
       delete :destroy, :id => ip_address
     }.should raise_error(ActionController::UnknownAction)
   end
+  
+  it "verify action should redirect to show" do
+    ip = IpAddress.first
+    get :verify, :id => ip
+    response.should redirect_to(ip_address_url(ip))
+  end
 end

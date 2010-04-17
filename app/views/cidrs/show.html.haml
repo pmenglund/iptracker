@@ -1,0 +1,29 @@
+- title "CIDR: #{@cidr.cidr}"
+
+%p
+	%strong Name:
+	=h @cidr.name
+%p
+	%strong Comments:
+	=h @cidr.comments
+%p
+	%strong Proxy:
+	=h @cidr.proxy
+
+%p
+	= link_to "Edit", edit_cidr_path(@cidr)
+	|
+	= link_to "Destroy", @cidr, :confirm => 'Are you sure?', :method => :delete
+	|
+	= link_to "View All", cidrs_path
+
+%table
+	%tr
+		%th IP Address
+		%th Name
+		%th Free
+	- @cidr.ip_addresses.each do |ip|
+		%tr
+			%td= link_to ip.ip_address, ip
+			%td= ip.name
+			%td= ip.free

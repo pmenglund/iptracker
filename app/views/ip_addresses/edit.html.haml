@@ -1,0 +1,13 @@
+- title "Edit Ip Address"
+
+- semantic_form_for(@ip_address) do |f|
+	- f.inputs do
+		= f.input :name, :label => 'Name'
+		= f.input :free, :label => 'Free'
+		= f.input :comments, :label => 'Comments'
+		= f.submit "Save"
+
+%p
+	= link_to "Show", ip_address_path(@ip_address)
+	|
+	= link_to "View All", ip_addresses_path

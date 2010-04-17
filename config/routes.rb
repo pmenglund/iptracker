@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :ip_addresses
+
+  map.resources :cidrs
+
   map.signup 'signup', :controller => 'users', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   map.login 'login', :controller => 'user_sessions', :action => 'new'

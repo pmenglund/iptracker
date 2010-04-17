@@ -1,0 +1,15 @@
+one:
+  cidr: MyString
+  name: MyString
+  comments: MyText
+  proxy: 1
+  lock_version: 1
+  position: 1
+
+two:
+  cidr: MyString
+  name: MyString
+  comments: MyText
+  proxy: 1
+  lock_version: 1
+  position: 1

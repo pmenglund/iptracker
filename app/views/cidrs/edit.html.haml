@@ -1,0 +1,13 @@
+- title "Edit #{@cidr.cidr}"
+
+- semantic_form_for(@cidr) do |f|
+	- f.inputs do
+		= f.input :name, :label => 'Name'
+		= f.input :proxy, :label => 'Proxy'
+		= f.input :comments, :label => 'Comments'
+		= f.submit "Save"
+
+%p
+	= link_to "Show", cidr_path(@cidr)
+	|
+	= link_to "View All", cidrs_path

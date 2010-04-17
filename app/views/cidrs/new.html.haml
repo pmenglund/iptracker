@@ -1,0 +1,11 @@
+- title "New Cidr"
+
+- semantic_form_for(@cidr) do |f|
+	- f.inputs do
+		= f.input :cidr, :label => 'Cidr'
+		= f.input :name, :label => 'Name'
+		= f.input :proxy, :label => 'Proxy'
+		= f.input :comments, :label => 'Comments'
+		= f.submit "Create"
+
+%p= link_to "Back to List", cidrs_path

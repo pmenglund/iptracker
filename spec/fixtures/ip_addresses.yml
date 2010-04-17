@@ -1,0 +1,19 @@
+one:
+  cidr_id: 1
+  ip_address: MyString
+  ip_hex: 1
+  name: MyString
+  comments: MyText
+  lock_version: 1
+  free: false
+  usable: false
+
+two:
+  cidr_id: 1
+  ip_address: MyString
+  ip_hex: 1
+  name: MyString
+  comments: MyText
+  lock_version: 1
+  free: false
+  usable: false

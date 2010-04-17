@@ -1,0 +1,24 @@
+- title "Ip Address"
+
+%p
+  %strong Cidr:
+  =link_to h(@ip_address.cidr.name), @ip_address.cidr
+%p
+  %strong Ip Address:
+  =h @ip_address.ip_address
+%p
+  %strong Name:
+  =h @ip_address.name
+%p
+  %strong Comments:
+  =h @ip_address.comments
+%p
+  %strong Free:
+  =h @ip_address.free
+
+%p
+  = link_to "Edit", edit_ip_address_path(@ip_address)
+  |
+  = link_to "Destroy", @ip_address, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", ip_addresses_path

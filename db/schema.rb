@@ -9,7 +9,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100416195358) do
+ActiveRecord::Schema.define(:version => 20100416205750) do
+
+  create_table "cidrs", :force => true do |t|
+    t.string   "cidr",                         :null => false
+    t.string   "name",                         :null => false
+    t.text     "comments",     :default => "", :null => false
+    t.integer  "proxy",        :default => 0,  :null => false
+    t.integer  "lock_version", :default => 0,  :null => false
+    t.integer  "position",     :default => 0,  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ip_addresses", :force => true do |t|
+    t.string   "ip_address",                     :null => false
+    t.string   "name",         :default => "",   :null => false
+    t.text     "comments",     :default => "",   :null => false
+    t.integer  "cidr_id",                        :null => false
+    t.integer  "ip_hex",                         :null => false
+    t.integer  "lock_version", :default => 0,    :null => false
+    t.boolean  "free",         :default => true, :null => false
+    t.boolean  "usable",       :default => true, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username"

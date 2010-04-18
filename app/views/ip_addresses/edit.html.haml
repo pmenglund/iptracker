@@ -3,8 +3,8 @@
 - semantic_form_for(@ip_address) do |f|
 	- f.inputs do
 		= f.input :name, :label => 'Name'
-		= f.input :free, :label => 'Free'
-		= f.input :comments, :label => 'Comments'
+		= f.input :free, :label => 'Free', :required => false
+		= f.input :comments, :label => 'Comments', :required => false
 		= f.submit "Save"
 
 %p

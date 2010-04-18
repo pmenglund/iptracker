@@ -2,10 +2,10 @@
 
 - semantic_form_for(@cidr) do |f|
 	- f.inputs do
-		= f.input :cidr, :label => 'Cidr'
-		= f.input :name, :label => 'Name'
-		= f.input :proxy, :label => 'Proxy'
-		= f.input :comments, :label => 'Comments'
+		= f.input :cidr, :label => 'CIDR', :hint => "CIDR of the form x.x.x.x/y"
+		= f.input :name, :label => 'Name', :hint => "Descriptive name of the CIDR"
+		= f.input :proxy, :label => 'Proxy', :hint => "Proxy for reaching the the network", :required => false
+		= f.input :comments, :label => 'Comments', :required => false
 		= f.submit "Create"
 
 %p= link_to "Back to List", cidrs_path

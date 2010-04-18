@@ -1,13 +1,15 @@
 %table
-	%tr
-		%th IP address
-		%th DNS Name
-		%th Lookup
-		%th Reverse lookup
-		%th Cidr
-		%th Comments
-		%th Free
-		%th Ping
-	- for ip_address in ip_addresses
-		= render(ip_address)
+	%thead
+		%tr
+			%th IP address
+			%th DNS Name
+			%th Lookup
+			%th Reverse lookup
+			%th Cidr
+			%th Free
+			%th Ping
+			%th
+	%tbody
+		- for ip_address in ip_addresses
+			= render(ip_address)
 

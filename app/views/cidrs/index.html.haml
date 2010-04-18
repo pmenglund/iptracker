@@ -1,16 +1,18 @@
 - title "Cidrs"
 
 %table
-  %tr
-    %th Cidr
-    %th Name
-    %th Comments
-    %th Free IPs
-  - for cidr in @cidrs
-    %tr
-      %td= link_to h(cidr.cidr), cidr
-      %td= h cidr.name
-      %td= h cidr.comments
-      %td= h cidr.free_ips.count
+	%thead
+		%tr
+			%th Cidr
+			%th Name
+			%th Comments
+			%th Free IPs
+	%tbody
+		- for cidr in @cidrs
+			%tr{:id => cycle('odd', 'even')}
+				%td= link_to h(cidr.cidr), cidr
+				%td= h cidr.name
+				%td= h cidr.comments
+				%td= h cidr.free_ips.count
 
 %p= link_to "New Cidr", new_cidr_path

@@ -27,7 +27,7 @@ describe HostsController do
   
   it "create action should redirect when model is valid" do
     Host.any_instance.stubs(:valid?).returns(true)
-    post :create
+    post :create, :host => {:name => "dummy", :host_type_id => 1}
     response.should redirect_to(host_url(assigns[:host]))
   end
   

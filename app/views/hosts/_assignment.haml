@@ -1,0 +1,3 @@
+= assignment.input :ip_address, :label => 'IP address', :as => :select, :collection => IpAddress.find(:all), :label_method => :display_name, :required => false, :wrapper_html => { :style => "display: inline;" }
+= assignment.input :_delete, :as => :boolean, :required => false, :wrapper_html => { :style => "margin-top: -2em" }
+= assignment.input :host_id, :as => :hidden

@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100417124432) do
+ActiveRecord::Schema.define(:version => 20100419170724) do
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "host_id",       :null => false
+    t.integer  "ip_address_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cidrs", :force => true do |t|
     t.string   "cidr",                         :null => false
@@ -22,11 +29,28 @@ ActiveRecord::Schema.define(:version => 20100417124432) do
     t.datetime "updated_at"
   end
 
+  create_table "host_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hosts", :force => true do |t|
+    t.string   "name",                         :null => false
+    t.text     "comments",     :default => "", :null => false
+    t.integer  "host_type_id",                 :null => false
+    t.integer  "lock_version", :default => 0,  :null => false
+    t.boolean  "eol"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ip_addresses", :force => true do |t|
     t.string   "ip_address",                     :null => false
     t.string   "name",         :default => "",   :null => false
     t.text     "comments",     :default => "",   :null => false
     t.integer  "cidr_id",                        :null => false
+    t.integer  "host_id"
     t.integer  "ip_hex",                         :null => false
     t.integer  "lock_version", :default => 0,    :null => false
     t.boolean  "free",         :default => true, :null => false

@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :hosts
+
+  map.resources :host_types
+
   map.resources :verifications
 
   map.resources :ip_addresses, :member => { :verify => :get }

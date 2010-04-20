@@ -1,0 +1,27 @@
+- title "Host"
+
+%p
+	%strong Name:
+	=h @host.name
+%p
+	%strong Host Type:
+	=h @host.host_type.name
+%p
+	%strong Eol:
+	=h @host.eol
+%p
+	%strong Comments:
+	=h @host.comments
+
+%p
+	%strong IP Addresses:
+	%ul 
+		- for assignment in @host.assignments
+			%li= assignment.ip_address.display_name
+
+%p
+	= link_to "Edit", edit_host_path(@host)
+	|
+	= link_to "Destroy", @host, :confirm => 'Are you sure?', :method => :delete
+	|
+	= link_to "View All", hosts_path

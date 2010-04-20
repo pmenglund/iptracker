@@ -20,6 +20,10 @@ class Cidr < ActiveRecord::Base
     end
   end
   
+  def display_name
+    "#{cidr} (#{name})"
+  end
+
   def generate_ips
       c = NetAddr::CIDR.create(self.cidr)
       c.enumerate.each do |ip|

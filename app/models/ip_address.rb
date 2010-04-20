@@ -3,7 +3,8 @@
 
 class IpAddress < ActiveRecord::Base
   belongs_to :cidr
-  has_many :verifications, :order => 'created_at', :limit => 2
+  has_one :assignment, :dependent => :destroy
+  has_many :verifications, :order => 'created_at', :limit => 30
   has_one :latest_verification, :class_name => 'Verification', :order => 'created_at DESC'
   
   attr_accessible :name, :comments, :free, :ip_address, :cidr_id
@@ -16,6 +17,12 @@ class IpAddress < ActiveRecord::Base
 
   before_create :convert_ip
 
+  def display_name
+    s = ip_address
+    s += " (#{name})" unless name.empty?
+    s
+  end
+  
   # does the IP resolve to the name?
   def ip_ok?
     return true unless self.usable?

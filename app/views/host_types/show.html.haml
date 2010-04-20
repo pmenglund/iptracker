@@ -1,0 +1,12 @@
+- title "Host Type"
+
+%p
+  %strong Name:
+  =h @host_type.name
+
+%p
+  = link_to "Edit", edit_host_type_path(@host_type)
+  |
+  = link_to "Destroy", @host_type, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", host_types_path

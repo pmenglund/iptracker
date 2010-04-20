@@ -1,0 +1,12 @@
+- semantic_form_for(@host) do |f|
+	- f.inputs do
+		= f.input :name, :label => 'Name', :hint => 'Name of the host, e.g. fully qualified domain name'
+		= f.input :host_type, :label => 'Type'
+		= f.input :eol, :label => 'EOL', :required => false, :hint => 'Is this host End Of Lifed?'
+		= f.input :comments, :label => 'Comments', :required => false, :input_html => {:rows => 5}
+		
+		/= link_to_add_fields "Add IP address", f, @host.assignments.first
+		- f.semantic_fields_for :assignments do |assignment|
+			= render('assignment', :assignment => assignment)
+
+		= f.submit "Submit"

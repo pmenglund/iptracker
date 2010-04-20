@@ -1,0 +1,13 @@
+- title "Host Types"
+
+%table
+  %tr
+    %th Name
+  - for host_type in @host_types
+    %tr
+      %td= h host_type.name
+      %td= link_to 'Show', host_type
+      %td= link_to 'Edit', edit_host_type_path(host_type)
+      %td= link_to 'Destroy', host_type, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Host Type", new_host_type_path

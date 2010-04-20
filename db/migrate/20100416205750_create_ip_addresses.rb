@@ -5,6 +5,7 @@ class CreateIpAddresses < ActiveRecord::Migration
       t.string  :name,          :null => false, :default => ""
       t.text    :comments,      :null => false, :default => ""
       t.integer :cidr_id,       :null => false
+      t.integer :host_id,       :null => true
       t.integer :ip_hex,        :null => false
       t.integer :lock_version,  :null => false, :default => 0
       t.boolean :free,          :null => false, :default => true

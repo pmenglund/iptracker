@@ -3,4 +3,5 @@ class Assignment < ActiveRecord::Base
   belongs_to :host
   
   attr_accessible :host_id, :ip_address_id
+  
 end

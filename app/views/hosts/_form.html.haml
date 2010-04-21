@@ -5,8 +5,8 @@
 		= f.input :eol, :label => 'EOL', :required => false, :hint => 'Is this host End Of Lifed?'
 		= f.input :comments, :label => 'Comments', :required => false, :input_html => {:rows => 5}
 		
-		/= link_to_add_fields "Add IP address", f, @host.assignments.first
 		- f.semantic_fields_for :assignments do |assignment|
 			= render('assignment', :assignment => assignment)
 
+		= button_to_function "Add field"
 		= f.submit "Submit"

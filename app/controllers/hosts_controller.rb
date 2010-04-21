@@ -4,7 +4,7 @@ class HostsController < ApplicationController
   end
   
   def show
-    @host = Host.find(params[:id])
+    @host = Host.find(params[:id], :include => :assignments)
   end
   
   def new
@@ -22,7 +22,7 @@ class HostsController < ApplicationController
   end
   
   def edit
-    @host = Host.find(params[:id])
+    @host = Host.find(params[:id], :include => :assignments)
   end
   
   def update

@@ -48,8 +48,11 @@ class Verification < ActiveRecord::Base
   def self.ping_from_nmap(ip)
     file = "/tmp/#{ip}.nmap"
     cmd = "nmap -sP -oG #{file} #{ip}"
-    %x{#{cmd}}
-    return nil unless $? == 0
+    out = %x{#{cmd} 2>&1}
+    unless $? == 0
+      $stderr.puts "ERROR: failed to execute nmap"
+      return nil
+    end
     File.open(file).readlines.each do |line|
     #%x{cat #{file}}.split("\n").each do |line|
       if line =~ /Host:\s+(\d+\.\d+\.\d+\.\d+)\s+\((.*)\)\s+Status:\s+(\S+)/

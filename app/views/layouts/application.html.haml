@@ -12,9 +12,10 @@
 	%body
 		#container
 			#menu
-				= link_to 'CIDRs', cidrs_path
-				= link_to 'IP addresses', ip_addresses_path
-				= link_to 'Hosts', hosts_path
+				%ul
+					%li= link_to 'CIDRs', cidrs_path
+					%li= link_to 'IP addresses', ip_addresses_path
+					%li= link_to 'Hosts', hosts_path
 			- flash.each do |name, msg|
 				= content_tag :div, msg, :id => "flash_#{name}"
       

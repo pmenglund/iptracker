@@ -96,6 +96,24 @@ form.formtastic fieldset ol li p.inline-hints {
   font-style: italic;
   font-size: 11px; }
 
+#menu {
+  margin-bottom: 5px; }
+  #menu a {
+    text-style: none;
+    padding: 5px; }
+  #menu a:hover {
+    background: #000000;
+    color: #ffffff; }
+  #menu ul {
+    padding-bottom: 15px;
+    padding-left: 0; }
+  #menu li {
+    float: left;
+    list-style: none;
+    border: 2px solid;
+    padding: 5px;
+    margin-right: 5px; }
+
 #footer {
   text-align: center;
   padding-top: 20px; }

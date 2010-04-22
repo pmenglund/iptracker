@@ -5,15 +5,16 @@
 
 %p
 	%strong Cidr:
-	= link_to h(@ip_address.cidr.name), @ip_address.cidr
+	= link_to h(@ip_address.cidr.cidr), @ip_address.cidr
+	= "(#{@ip_address.cidr.name})"
 %p
 	%strong Ip Address:
 	= h @ip_address.ip_address
-	= "(#{h @ip_address.lookup})"
+	= "[#{h @ip_address.lookup}]"
 %p
 	%strong Name:
 	=h @ip_address.name
-	= "(#{h @ip_address.reverse_lookup})"
+	= "[#{h @ip_address.reverse_lookup}]"
 %p
 	%strong Comments:
 	=h @ip_address.comments

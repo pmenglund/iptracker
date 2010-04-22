@@ -1,8 +1,10 @@
 %table
-	%tr
-		%th When
-		%th Lookup
-		%th Reverse lookup
-		%th Ping
-	- for verification in verifications
-		= render(verification)
+	%thead
+		%tr
+			%th When
+			%th Lookup
+			%th Reverse lookup
+			%th Ping
+	%tbody
+		- for verification in verifications
+			= render(verification)

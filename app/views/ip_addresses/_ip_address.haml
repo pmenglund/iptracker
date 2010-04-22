@@ -1,8 +1,9 @@
 %tr{:id => cycle("odd", "even")}
 	%td= link_to h(ip_address.ip_address), ip_address
 	%td= h ip_address.name
-	%td= display_name(ip_address.name_ok?, ip_address.lookup)
-	%td= display_name(ip_address.ip_ok?, ip_address.reverse_lookup)
+	%td= display_name(ip_address.lookup_ok?, ip_address.lookup)
+	%td= display_name(ip_address.reverse_lookup_ok?, ip_address.reverse_lookup)
+	%td= link_to_host(ip_address)
 	%td= link_to h(ip_address.cidr.name), ip_address.cidr
 	%td= yes_no(ip_address.free)
 	%td= up_down(ip_address.ping)

@@ -26,7 +26,7 @@ class IpAddressesController < ApplicationController
 
   def verify
     @ip_address = IpAddress.find(params[:id])
-    @ip_address.verify
+    @ip_address.send_later(:verify)
     flash[:notice] = "Verification in progress..."
     redirect_to @ip_address
   end

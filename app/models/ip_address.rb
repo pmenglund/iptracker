@@ -4,7 +4,8 @@
 class IpAddress < ActiveRecord::Base
   belongs_to :cidr
   has_one :assignment, :dependent => :destroy
-  has_many :verifications, :order => 'created_at', :limit => 30
+  has_one :host, :through => :assignment
+  has_many :verifications, :order => 'created_at DESC', :limit => 2
   has_one :latest_verification, :class_name => 'Verification', :order => 'created_at DESC'
   
   attr_accessible :name, :comments, :free, :ip_address, :cidr_id
@@ -24,17 +25,17 @@ class IpAddress < ActiveRecord::Base
   end
   
   # does the IP resolve to the name?
-  def ip_ok?
+  def reverse_lookup_ok?
     return true unless self.usable?
     return true if self.name.empty?
     reverse_lookup == self.name
   end
 
-  # does sthe name resolve to the IP?
-  def name_ok?
+  # does the name resolve to the IP?
+  def lookup_ok?
     return true unless self.usable?
     return true if self.name.empty?
-    lookup == self.name
+    lookup == self.ip_address
   end
   
   def ip_up?
@@ -43,7 +44,8 @@ class IpAddress < ActiveRecord::Base
   end
   
   def ping
-    get_latest 'ping'
+    #get_latest 'ping'
+    latest_verification ? latest_verification.ping : nil
   end
   
   def lookup
@@ -55,7 +57,7 @@ class IpAddress < ActiveRecord::Base
   end
 
   def verify
-    verifications.create(:lookup => 'test.foo.com', :reverse_lookup => ip_address, :ping => true)
+    Verification.verify_ip(self)
   end
   
   protected

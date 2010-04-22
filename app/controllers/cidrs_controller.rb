@@ -47,6 +47,9 @@ class CidrsController < ApplicationController
   
   def verify
     @cidr = Cidr.find(params[:id])
+    @cidr.ip_addresses.each do |ip|
+      ip.send_later(:verify) if ip.usable?
+    end
     flash[:notice] = "Verification started..."
     redirect_to @cidr
   end

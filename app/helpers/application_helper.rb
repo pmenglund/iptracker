@@ -4,17 +4,24 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   def yes_no(bool)
-    bool ? "yes" : "no"
+    case
+    when bool.nil?
+      "-"
+    when bool
+      "yes"
+    else
+      "no"
+    end
   end
   
   def up_down(bool)
     case
     when bool.nil?
       "-"
-    when true
-      "yes"
-    when false
-      "no"
+    when bool
+      "up"
+    else
+      "down"
     end
   end
   
@@ -29,9 +36,12 @@ module ApplicationHelper
     s += '</span>' unless flag
     s
   end
-  
-  def link_to_remove_fields(name, f)
-    f.hidden_field(:_delete) + link_to_function(name, "remove_fields(this)")
+
+  def link_to_host(ip_address)
+    if ip_address.host
+      link_to h(ip_address.host.name), ip_address.host
+    else
+      ""
+    end
   end
-  
 end

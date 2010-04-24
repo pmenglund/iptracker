@@ -1,18 +1,16 @@
 - title "Cidrs"
+- javascript 'prototype'
 
 %table
 	%thead
 		%tr
+			%th{:style => 'width: 10px;'}
+			%th{:style => 'width: 10px;'}
 			%th Cidr
 			%th Name
 			%th IPs
 			%th Free IPs
-	%tbody
-		- for cidr in @cidrs
-			%tr{:id => cycle('odd', 'even')}
-				%td= link_to h(cidr.cidr), cidr
-				%td= h cidr.name
-				%td= h cidr.ip_addresses.count
-				%td= h cidr.free_ips.count
+	%tbody{:id => :cidrs}
+		= render @cidrs
 
 %p= link_to "New Cidr", new_cidr_path

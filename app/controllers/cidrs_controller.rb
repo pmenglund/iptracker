@@ -53,4 +53,13 @@ class CidrsController < ApplicationController
     flash[:notice] = "Verification started..."
     redirect_to @cidr
   end
+  
+  def reorder
+    @cidr = Cidr.find(params[:id])
+    direction = params[:direction] == 'up' ? -1 : 1
+    @cidr.position += direction
+    @cidr.save
+    @cidrs = Cidr.all(:order => 'position')
+    render @cidrs
+  end
 end

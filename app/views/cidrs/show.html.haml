@@ -1,14 +1,14 @@
-- title "CIDR: #{@cidr.cidr}"
+- title "CIDR: #{@cidr.cidr} - #{@cidr.name}"
 
-%p
-	%strong Name:
-	=h @cidr.name
-%p
-	%strong Comments:
-	=h @cidr.comments
-%p
-	%strong Proxy:
-	=h @cidr.proxy
+- unless @cidr.proxy.empty?
+	%p
+		%strong Proxy:
+		=h @cidr.proxy
+
+- unless @cidr.comments.empty?
+	%p
+		%strong Comments:
+		=h @cidr.comments
 
 %p
 	= link_to "Edit", edit_cidr_path(@cidr)

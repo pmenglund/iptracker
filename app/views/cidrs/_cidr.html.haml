@@ -1,0 +1,9 @@
+%tr{:id => cycle('odd', 'even')}
+	%td#order
+		=link_to_remote("&uarr;", :update => :cidrs, :url => {:action => :reorder, :id => cidr.id, :direction => :up}, :method => :post) unless @cidrs[0] == cidr
+	%td#order
+		=link_to_remote("&darr;", :url => {:action => :reorder, :id => cidr.id}, :update => :cidrs) unless @cidrs.last == cidr
+	%td= link_to h(cidr.cidr), cidr
+	%td= h cidr.name
+	%td= h cidr.ip_addresses.count
+	%td= h cidr.free_ips.count

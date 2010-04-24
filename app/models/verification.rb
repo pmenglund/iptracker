@@ -1,3 +1,6 @@
+# Copyright 2010 Code Nursery AB. All rights reserved.
+# Use is subject to license terms.
+
 class Verification < ActiveRecord::Base
   belongs_to :ip_address
   attr_accessible :ip_address_id, :lookup, :reverse_lookup, :ping

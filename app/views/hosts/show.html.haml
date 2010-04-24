@@ -17,7 +17,7 @@
 	%strong IP Addresses:
 	%ul 
 		- for assignment in @host.assignments
-			%li= assignment.ip_address.display_name
+			%li= h(assignment.ip_address.display_name)
 
 %p
 	= link_to "Edit", edit_host_path(@host)

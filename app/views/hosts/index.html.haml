@@ -4,7 +4,7 @@
 	%thead
 		%tr
 			%th Name
-			%th Comments
+			%th IP Addresses
 			%th Host type
 			%th Eol
 			%th
@@ -12,7 +12,11 @@
 		- for host in @hosts
 			%tr{:id => cycle('odd', 'even')}
 				%td= link_to h(host.name), host
-				%td= h host.comments
+				%td
+					- for ip_address in host.ip_addresses
+						= link_to(h(ip_address.ip_address), ip_address)
+						= h(ip_address.name)
+						%br
 				%td= h host.host_type.name
 				%td= h host.eol
 				%td= link_to 'Edit', edit_host_path(host)

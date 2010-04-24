@@ -1,4 +1,9 @@
-= assignment.input :ip_address, :label => 'IP address', :as => :select, :collection => IpAddress.find(:all), :label_method => :display_name, :required => false, :wrapper_html => { :style => "display: inline;" }
-= assignment.input :_delete, :as => :boolean, :required => false, :wrapper_html => { :style => "margin-top: -2em;  margin-right: 0px;" }
+/- debugger
+= assignment.input :cidr, :label => 'CIDR', :as => :select, :collection => Cidr.find(:all)
+= assignment.input :ip_address, :label => 'IP address', :as => :select, :collection => IpAddress.find(:all, :conditions => {:cidr_id => assignment.object.ip_address.cidr_id}), :label_method => :display_name, :required => false
+/, :wrapper_html => { :style => "display: inline;" }
+= assignment.input :_delete, :as => :boolean, :required => false
+/, :wrapper_html => { :style => "margin-top: -2em;  margin-right: 0px;" }
 = assignment.input :host_id, :as => :hidden
-/observe_field("net_fe", :frequency => 0.5, :update => "fe_ip_select", :url => {:action => :get_fe_ips}, :with => "'fe_cidr_id='+value")
+- base = assignment.object_name.parameterize("_").to_s
+= observe_field(base + "_cidr_id", :frequency => 0.5, :update => base  + "_ip_address_id", :url => {:controller => :ip_addresses}, :method => :get, :with => "'cidr_id='+value")

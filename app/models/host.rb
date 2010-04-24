@@ -1,6 +1,10 @@
+# Copyright 2010 Code Nursery AB. All rights reserved.
+# Use is subject to license terms.
+
 class Host < ActiveRecord::Base
   belongs_to :host_type
   has_many :assignments, :dependent => :destroy
+  has_many :ip_addresses, :through => :assignments, :order => 'ip_hex'
   
   validates_presence_of :name, :host_type
   

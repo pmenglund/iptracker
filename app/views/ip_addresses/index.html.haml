@@ -2,4 +2,5 @@
 
 = render(:partial => 'ip_addresses', :object => @ip_addresses)
 
-%p= will_paginate @ip_addresses
+- if @ip_addresses.respond_to?(:total_pages) && @ip_addresses.total_pages > 1
+	%p= will_paginate @ip_addresses

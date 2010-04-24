@@ -2,8 +2,21 @@
 # Use is subject to license terms.
 
 class IpAddressesController < ApplicationController
+  
+  # TODO: this is not DRY
   def index
-    @ip_addresses = IpAddress.paginate :page => params[:page], :order => 'ip_hex', :include => [:cidr, :latest_verification]
+    if params[:cidr_id]
+      if request.xhr?
+        @ip_addresses = IpAddress.find :all, :order => 'ip_hex', :include => [:cidr, :latest_verification], :conditions => {:cidr_id => params[:cidr_id]}
+      else
+        @ip_addresses = IpAddress.paginate :page => params[:page], :order => 'ip_hex', :include => [:cidr, :latest_verification], :conditions => {:cidr_id => params[:cidr_id]}
+      end
+    elsif params[:host_id]
+      host = Host.find(params[:host_id])
+      @ip_addresses = host.ip_addresses      
+    else
+      @ip_addresses = IpAddress.paginate :page => params[:page], :order => 'ip_hex', :include => [:cidr, :latest_verification]
+    end
   end
   
   def show

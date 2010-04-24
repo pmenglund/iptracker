@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :hosts
+  map.resources :hosts, :has_many => :ip_addresses
 
   map.resources :host_types
 
@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :ip_addresses, :member => { :verify => :get }
 
-  map.resources :cidrs, :member => { :verify => :get }
+  map.resources :cidrs, :member => { :verify => :get }, :has_many => :ip_addresses
 
   map.signup 'signup', :controller => 'users', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'

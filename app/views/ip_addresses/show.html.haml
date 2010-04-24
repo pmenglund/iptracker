@@ -18,9 +18,11 @@
 %p
 	%strong Comments:
 	=h @ip_address.comments
-%p
-	%strong Ping:
-	=h @ip_address.ping
+
+- if @ip_address.host
+	%p
+		%strong Belongs to:
+		=link_to h(@ip_address.host.name), @ip_address.host
 %p
 	%strong Free:
 	=h @ip_address.free

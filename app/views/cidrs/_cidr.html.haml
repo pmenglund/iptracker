@@ -1,4 +1,4 @@
-%tr{:id => cycle('odd', 'even')}
+%tr{:class => cycle('odd', 'even')}
 	%td#order
 		=link_to_remote("&uarr;", :update => :cidrs, :url => {:action => :reorder, :id => cidr.id, :direction => :up}, :method => :post) unless @cidrs[0] == cidr
 	%td#order

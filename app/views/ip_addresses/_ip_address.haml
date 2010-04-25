@@ -1,4 +1,4 @@
-%tr{:id => cycle("odd", "even")}
+%tr{:class => cycle("odd", "even")}
 	%td= link_to h(ip_address.ip_address), ip_address
 	%td= h ip_address.name
 	%td= display_name(ip_address.lookup_ok?, ip_address.lookup)

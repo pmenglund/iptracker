@@ -62,6 +62,18 @@ a {
     font-size: 12px;
     list-style: disc; }
 
+.odd {
+  background-color: #dddddd; }
+
+.even {
+  background-color: #eeeeee; }
+
+.odd:hover {
+  background-color: #cccccc; }
+
+.even:hover {
+  background-color: #cccccc; }
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -82,18 +94,18 @@ tbody td#order a {
 tbody tr {
   padding: 3px;
   line-height: 1.5em; }
-tbody tr#odd:hover {
-  background-color: #cccccc; }
-tbody tr#even:hover {
-  background-color: #cccccc; }
-tbody tr#odd {
-  background-color: #dddddd; }
-tbody tr#even {
-  background-color: #eeeeee; }
 
 form.formtastic fieldset ol li p.inline-hints {
   font-style: italic;
   font-size: 11px; }
+
+fieldset#ips {
+  border: 1px solid; }
+  fieldset#ips legend {
+    font-weight: bold;
+    margin-left: 20px;
+    padding-left: 5px;
+    padding-right: 5px; }
 
 #menu {
   margin-bottom: 5px; }

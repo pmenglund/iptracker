@@ -1,4 +1,4 @@
-%tr{:id => cycle('odd', 'even')}
+%tr{:class => cycle('odd', 'even')}
 	%td= verification.created_at.to_s(:short)
 	%td= verification.lookup
 	%td= verification.reverse_lookup

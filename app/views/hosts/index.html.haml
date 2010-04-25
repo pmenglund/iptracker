@@ -10,7 +10,7 @@
 			%th
 	%tbody
 		- for host in @hosts
-			%tr{:id => cycle('odd', 'even')}
+			%tr{:class => cycle('odd', 'even')}
 				%td= link_to h(host.name), host
 				%td
 					- for ip_address in host.ip_addresses

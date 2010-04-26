@@ -21,13 +21,15 @@ ActiveRecord::Schema.define(:version => 20100421112520) do
   create_table "cidrs", :force => true do |t|
     t.string   "cidr",                         :null => false
     t.string   "name",                         :null => false
-    t.text     "comments",     :default => "", :null => false
+    t.text     "comments",                     :null => false
     t.string   "proxy",        :default => "", :null => false
     t.integer  "lock_version", :default => 0,  :null => false
     t.integer  "position",     :default => 0,  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "cidrs", ["position"], :name => "index_cidrs_on_position"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -51,28 +53,33 @@ ActiveRecord::Schema.define(:version => 20100421112520) do
   end
 
   create_table "hosts", :force => true do |t|
-    t.string   "name",                         :null => false
-    t.text     "comments",     :default => "", :null => false
-    t.integer  "host_type_id",                 :null => false
-    t.integer  "lock_version", :default => 0,  :null => false
+    t.string   "name",                        :null => false
+    t.text     "comments",                    :null => false
+    t.integer  "host_type_id",                :null => false
+    t.integer  "lock_version", :default => 0, :null => false
     t.boolean  "eol"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "ip_addresses", :force => true do |t|
-    t.string   "ip_address",                     :null => false
-    t.string   "name",         :default => "",   :null => false
-    t.text     "comments",     :default => "",   :null => false
-    t.integer  "cidr_id",                        :null => false
+    t.string   "ip_address",                                  :null => false
+    t.string   "name",                      :default => "",   :null => false
+    t.text     "comments",                                    :null => false
+    t.integer  "cidr_id",                                     :null => false
     t.integer  "host_id"
-    t.integer  "ip_hex",                         :null => false
-    t.integer  "lock_version", :default => 0,    :null => false
-    t.boolean  "free",         :default => true, :null => false
-    t.boolean  "usable",       :default => true, :null => false
+    t.integer  "ip_hex",       :limit => 8,                   :null => false
+    t.integer  "lock_version",              :default => 0,    :null => false
+    t.boolean  "free",                      :default => true, :null => false
+    t.boolean  "usable",                    :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "ip_addresses", ["cidr_id", "free", "usable"], :name => "index_ip_addresses_on_cidr_id_and_free_and_usable"
+  add_index "ip_addresses", ["cidr_id"], :name => "index_ip_addresses_on_cidr_id"
+  add_index "ip_addresses", ["ip_address", "cidr_id"], :name => "index_ip_addresses_on_ip_address_and_cidr_id"
+  add_index "ip_addresses", ["ip_hex", "cidr_id"], :name => "index_ip_addresses_on_ip_hex_and_cidr_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"

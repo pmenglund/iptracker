@@ -9,9 +9,11 @@ class CreateCidrs < ActiveRecord::Migration
       t.integer :position,      :null => false, :default => 0
       t.timestamps
     end
+    add_index :cidrs, :position
   end
   
   def self.down
+    remove_index :cidrs, :position
     drop_table :cidrs
   end
 end

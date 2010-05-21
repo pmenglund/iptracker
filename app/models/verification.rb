@@ -38,6 +38,12 @@ class Verification < ActiveRecord::Base
 
     begin
       ping = ping_from_nmap(ip.ip_address)
+      
+      # when the IP responds to ping and it is free, set it to non-free
+      if ping && ip.free
+        ip.free = false
+        ip.save
+      end
     rescue Exception => e
     end
     

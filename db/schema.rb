@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20100421112520) do
   create_table "cidrs", :force => true do |t|
     t.string   "cidr",                         :null => false
     t.string   "name",                         :null => false
-    t.text     "comments",                     :null => false
+    t.text     "comments",     :default => "", :null => false
     t.string   "proxy",        :default => "", :null => false
     t.integer  "lock_version", :default => 0,  :null => false
     t.integer  "position",     :default => 0,  :null => false
@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(:version => 20100421112520) do
   end
 
   create_table "hosts", :force => true do |t|
-    t.string   "name",                        :null => false
-    t.text     "comments",                    :null => false
-    t.integer  "host_type_id",                :null => false
-    t.integer  "lock_version", :default => 0, :null => false
+    t.string   "name",                         :null => false
+    t.text     "comments",     :default => "", :null => false
+    t.integer  "host_type_id",                 :null => false
+    t.integer  "lock_version", :default => 0,  :null => false
     t.boolean  "eol"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20100421112520) do
   create_table "ip_addresses", :force => true do |t|
     t.string   "ip_address",                                  :null => false
     t.string   "name",                      :default => "",   :null => false
-    t.text     "comments",                                    :null => false
+    t.text     "comments",                  :default => "",   :null => false
     t.integer  "cidr_id",                                     :null => false
     t.integer  "host_id"
     t.integer  "ip_hex",       :limit => 8,                   :null => false

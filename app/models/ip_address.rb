@@ -25,11 +25,7 @@ class IpAddress < ActiveRecord::Base
   
   # virtual attribute to set/get host
   def host_id=hid
-    if assignment
-      a = assignment
-    else
-      a = Assignment.new(:ip_address_id => id)
-    end
+    a = assignment ? assignment : Assignment.new(:ip_address_id => id)
     a.host_id = hid
     a.save
   end

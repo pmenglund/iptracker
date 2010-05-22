@@ -8,7 +8,7 @@ class IpAddress < ActiveRecord::Base
   has_many :verifications, :order => 'created_at DESC', :limit => 2
   has_one :latest_verification, :class_name => 'Verification', :order => 'created_at DESC'
   
-  attr_accessible :name, :comments, :free, :ip_address, :cidr_id
+  attr_accessible :name, :comments, :free, :ip_address, :cidr_id, :host_id
   cattr_reader :per_page
   @@per_page = 32
   
@@ -18,6 +18,22 @@ class IpAddress < ActiveRecord::Base
 
   before_create :convert_ip
 
+  # virtual attribute to set/get host
+  def host_id
+    host.id if host
+  end
+  
+  # virtual attribute to set/get host
+  def host_id=hid
+    if assignment
+      a = assignment
+    else
+      a = Assignment.new(:ip_address_id => id)
+    end
+    a.host_id = hid
+    a.save
+  end
+  
   def display_name
     s = ip_address
     s += " (#{name})" unless name.empty?
